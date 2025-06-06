@@ -1,0 +1,363 @@
+[
+  {
+    "selector": "div[data-entity-urn*=\"job\"]",
+    "index": 0,
+    "tag": "div",
+    "classes": [
+      "base-card",
+      "relative",
+      "w-full",
+      "hover:no-underline",
+      "focus:no-underline",
+      "base-card--link",
+      "base-search-card",
+      "base-search-card--link",
+      "job-search-card"
+    ],
+    "data_attrs": {
+      "data-entity-urn": "urn:li:jobPosting:4207892829",
+      "data-impression-id": "jobs-search-desktop-0",
+      "data-reference-id": "uCwvCZDwt9Q3yPvFCw77ig==",
+      "data-tracking-id": "JRKjyLJsfC7DTlBqrO1qsQ==",
+      "data-column": "1",
+      "data-row": "1"
+    },
+    "text_snippet": "System Administrator"
+  },
+  {
+    "selector": "div[data-entity-urn*=\"job\"]",
+    "index": 1,
+    "tag": "div",
+    "classes": [
+      "base-card",
+      "relative",
+      "w-full",
+      "hover:no-underline",
+      "focus:no-underline",
+      "base-card--link",
+      "base-search-card",
+      "base-search-card--link",
+      "job-search-card"
+    ],
+    "data_attrs": {
+      "data-entity-urn": "urn:li:jobPosting:4236939624",
+      "data-impression-id": "jobs-search-desktop-1",
+      "data-reference-id": "uCwvCZDwt9Q3yPvFCw77ig==",
+      "data-tracking-id": "JnYS8KKhnGFWiJ+k9F5s7Q==",
+      "data-column": "1",
+      "data-row": "2"
+    },
+    "text_snippet": "Officer- 1, Software Engineering- Development"
+  },
+  {
+    "selector": "div[data-entity-urn*=\"job\"]",
+    "index": 2,
+    "tag": "div",
+    "classes": [
+      "base-card",
+      "relative",
+      "w-full",
+      "hover:no-underline",
+      "focus:no-underline",
+      "base-card--link",
+      "base-search-card",
+      "base-search-card--link",
+      "job-search-card"
+    ],
+    "data_attrs": {
+      "data-entity-urn": "urn:li:jobPosting:4234680919",
+      "data-impression-id": "jobs-search-desktop-2",
+      "data-reference-id": "uCwvCZDwt9Q3yPvFCw77ig==",
+      "data-tracking-id": "4BGKAIHCvVGbpuMP+p9vDA==",
+      "data-column": "1",
+      "data-row": "3"
+    },
+    "text_snippet": "Cyber Security Instructor"
+  },
+  {
+    "selector": "div.base-card",
+    "index": 0,
+    "tag": "div",
+    "classes": [
+      "base-card",
+      "relative",
+      "w-full",
+      "hover:no-underline",
+      "focus:no-underline",
+      "base-card--link",
+      "base-search-card",
+      "base-search-card--link",
+      "job-search-card"
+    ],
+    "data_attrs": {
+      "data-entity-urn": "urn:li:jobPosting:4207892829",
+      "data-impression-id": "jobs-search-desktop-0",
+      "data-reference-id": "uCwvCZDwt9Q3yPvFCw77ig==",
+      "data-tracking-id": "JRKjyLJsfC7DTlBqrO1qsQ==",
+      "data-column": "1",
+      "data-row": "1"
+    },
+    "text_snippet": "System Administrator"
+  },
+  {
+    "selector": "div.base-card",
+    "index": 1,
+    "tag": "div",
+    "classes": [
+      "base-card",
+      "relative",
+      "w-full",
+      "hover:no-underline",
+      "focus:no-underline",
+      "base-card--link",
+      "base-search-card",
+      "base-search-card--link",
+      "job-search-card"
+    ],
+    "data_attrs": {
+      "data-entity-urn": "urn:li:jobPosting:4236939624",
+      "data-impression-id": "jobs-search-desktop-1",
+      "data-reference-id": "uCwvCZDwt9Q3yPvFCw77ig==",
+      "data-tracking-id": "JnYS8KKhnGFWiJ+k9F5s7Q==",
+      "data-column": "1",
+      "data-row": "2"
+    },
+    "text_snippet": "Officer- 1, Software Engineering- Development"
+  },
+  {
+    "selector": "div.base-card",
+    "index": 2,
+    "tag": "div",
+    "classes": [
+      "base-card",
+      "relative",
+      "w-full",
+      "hover:no-underline",
+      "focus:no-underline",
+      "base-card--link",
+      "base-search-card",
+      "base-search-card--link",
+      "job-search-card"
+    ],
+    "data_attrs": {
+      "data-entity-urn": "urn:li:jobPosting:4234680919",
+      "data-impression-id": "jobs-search-desktop-2",
+      "data-reference-id": "uCwvCZDwt9Q3yPvFCw77ig==",
+      "data-tracking-id": "4BGKAIHCvVGbpuMP+p9vDA==",
+      "data-column": "1",
+      "data-row": "3"
+    },
+    "text_snippet": "Cyber Security Instructor"
+  },
+  {
+    "selector": "div.job-search-card",
+    "index": 0,
+    "tag": "div",
+    "classes": [
+      "base-card",
+      "relative",
+      "w-full",
+      "hover:no-underline",
+      "focus:no-underline",
+      "base-card--link",
+      "base-search-card",
+      "base-search-card--link",
+      "job-search-card"
+    ],
+    "data_attrs": {
+      "data-entity-urn": "urn:li:jobPosting:4207892829",
+      "data-impression-id": "jobs-search-desktop-0",
+      "data-reference-id": "uCwvCZDwt9Q3yPvFCw77ig==",
+      "data-tracking-id": "JRKjyLJsfC7DTlBqrO1qsQ==",
+      "data-column": "1",
+      "data-row": "1"
+    },
+    "text_snippet": "System Administrator"
+  },
+  {
+    "selector": "div.job-search-card",
+    "index": 1,
+    "tag": "div",
+    "classes": [
+      "base-card",
+      "relative",
+      "w-full",
+      "hover:no-underline",
+      "focus:no-underline",
+      "base-card--link",
+      "base-search-card",
+      "base-search-card--link",
+      "job-search-card"
+    ],
+    "data_attrs": {
+      "data-entity-urn": "urn:li:jobPosting:4236939624",
+      "data-impression-id": "jobs-search-desktop-1",
+      "data-reference-id": "uCwvCZDwt9Q3yPvFCw77ig==",
+      "data-tracking-id": "JnYS8KKhnGFWiJ+k9F5s7Q==",
+      "data-column": "1",
+      "data-row": "2"
+    },
+    "text_snippet": "Officer- 1, Software Engineering- Development"
+  },
+  {
+    "selector": "div.job-search-card",
+    "index": 2,
+    "tag": "div",
+    "classes": [
+      "base-card",
+      "relative",
+      "w-full",
+      "hover:no-underline",
+      "focus:no-underline",
+      "base-card--link",
+      "base-search-card",
+      "base-search-card--link",
+      "job-search-card"
+    ],
+    "data_attrs": {
+      "data-entity-urn": "urn:li:jobPosting:4234680919",
+      "data-impression-id": "jobs-search-desktop-2",
+      "data-reference-id": "uCwvCZDwt9Q3yPvFCw77ig==",
+      "data-tracking-id": "4BGKAIHCvVGbpuMP+p9vDA==",
+      "data-column": "1",
+      "data-row": "3"
+    },
+    "text_snippet": "Cyber Security Instructor"
+  },
+  {
+    "selector": "div.base-search-card",
+    "index": 0,
+    "tag": "div",
+    "classes": [
+      "base-card",
+      "relative",
+      "w-full",
+      "hover:no-underline",
+      "focus:no-underline",
+      "base-card--link",
+      "base-search-card",
+      "base-search-card--link",
+      "job-search-card"
+    ],
+    "data_attrs": {
+      "data-entity-urn": "urn:li:jobPosting:4207892829",
+      "data-impression-id": "jobs-search-desktop-0",
+      "data-reference-id": "uCwvCZDwt9Q3yPvFCw77ig==",
+      "data-tracking-id": "JRKjyLJsfC7DTlBqrO1qsQ==",
+      "data-column": "1",
+      "data-row": "1"
+    },
+    "text_snippet": "System Administrator"
+  },
+  {
+    "selector": "div.base-search-card",
+    "index": 1,
+    "tag": "div",
+    "classes": [
+      "base-card",
+      "relative",
+      "w-full",
+      "hover:no-underline",
+      "focus:no-underline",
+      "base-card--link",
+      "base-search-card",
+      "base-search-card--link",
+      "job-search-card"
+    ],
+    "data_attrs": {
+      "data-entity-urn": "urn:li:jobPosting:4236939624",
+      "data-impression-id": "jobs-search-desktop-1",
+      "data-reference-id": "uCwvCZDwt9Q3yPvFCw77ig==",
+      "data-tracking-id": "JnYS8KKhnGFWiJ+k9F5s7Q==",
+      "data-column": "1",
+      "data-row": "2"
+    },
+    "text_snippet": "Officer- 1, Software Engineering- Development"
+  },
+  {
+    "selector": "div.base-search-card",
+    "index": 2,
+    "tag": "div",
+    "classes": [
+      "base-card",
+      "relative",
+      "w-full",
+      "hover:no-underline",
+      "focus:no-underline",
+      "base-card--link",
+      "base-search-card",
+      "base-search-card--link",
+      "job-search-card"
+    ],
+    "data_attrs": {
+      "data-entity-urn": "urn:li:jobPosting:4234680919",
+      "data-impression-id": "jobs-search-desktop-2",
+      "data-reference-id": "uCwvCZDwt9Q3yPvFCw77ig==",
+      "data-tracking-id": "4BGKAIHCvVGbpuMP+p9vDA==",
+      "data-column": "1",
+      "data-row": "3"
+    },
+    "text_snippet": "Cyber Security Instructor"
+  },
+  {
+    "selector": "div[class*=\"job\"]",
+    "index": 0,
+    "tag": "div",
+    "classes": [
+      "base-card",
+      "relative",
+      "w-full",
+      "hover:no-underline",
+      "focus:no-underline",
+      "base-card--link",
+      "base-search-card",
+      "base-search-card--link",
+      "job-search-card"
+    ],
+    "data_attrs": {
+      "data-entity-urn": "urn:li:jobPosting:4207892829",
+      "data-impression-id": "jobs-search-desktop-0",
+      "data-reference-id": "uCwvCZDwt9Q3yPvFCw77ig==",
+      "data-tracking-id": "JRKjyLJsfC7DTlBqrO1qsQ==",
+      "data-column": "1",
+      "data-row": "1"
+    },
+    "text_snippet": "System Administrator"
+  },
+  {
+    "selector": "div[class*=\"job\"]",
+    "index": 1,
+    "tag": "div",
+    "classes": [
+      "job-posting-benefits",
+      "text-sm"
+    ],
+    "data_attrs": {},
+    "text_snippet": "Actively Hiring"
+  },
+  {
+    "selector": "div[class*=\"job\"]",
+    "index": 2,
+    "tag": "div",
+    "classes": [
+      "base-card",
+      "relative",
+      "w-full",
+      "hover:no-underline",
+      "focus:no-underline",
+      "base-card--link",
+      "base-search-card",
+      "base-search-card--link",
+      "job-search-card"
+    ],
+    "data_attrs": {
+      "data-entity-urn": "urn:li:jobPosting:4236939624",
+      "data-impression-id": "jobs-search-desktop-1",
+      "data-reference-id": "uCwvCZDwt9Q3yPvFCw77ig==",
+      "data-tracking-id": "JnYS8KKhnGFWiJ+k9F5s7Q==",
+      "data-column": "1",
+      "data-row": "2"
+    },
+    "text_snippet": "Officer- 1, Software Engineering- Development"
+  }
+]

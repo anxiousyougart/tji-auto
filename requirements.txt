@@ -1,0 +1,17 @@
+# Daily Tech Digest Pipeline Dependencies
+# Core web scraping and data processing
+requests>=2.25.1
+beautifulsoup4>=4.9.3
+python-dateutil>=2.8.2
+groq>=0.4.1
+
+# Data processing and utilities
+lxml>=4.6.3
+urllib3>=1.26.5
+
+# Messaging and communication
+twilio>=8.2.0
+
+# Optional: For enhanced parsing and processing
+html5lib>=1.1
+chardet>=4.0.0
