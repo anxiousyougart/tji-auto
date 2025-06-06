@@ -1,14 +1,5 @@
 #!/usr/bin/env python3
-"""
-Intelligent Entry-Level Job Scraper for Fresh Engineering Graduates (24-Hour Filter)
 
-This script scrapes RECENT entry-level job postings (posted within 24 hours, 0-1 years experience)
-from LinkedIn and other job sites, focusing on positions suitable for fresh engineering graduates
-while excluding senior roles. Uses AI-powered selection to identify the best recent entry-level opportunities.
-
-Author: Augment Agent
-Date: 2025-01-25
-"""
 
 import requests
 import json
@@ -31,8 +22,7 @@ try:
     GROQ_API_KEY = get_groq_api_key()
 except ImportError:
     # Fallback configuration if config.py is not available
-    GROQ_API_KEY = "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"
-
+    GROQ_API_KEY = os.getenv("GROQ_API_KEY")
 # Request configuration
 HEADERS = {
     'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36'

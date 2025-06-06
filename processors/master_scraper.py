@@ -1,15 +1,5 @@
 #!/usr/bin/env python3
-"""
-Master Scraper - Simple Entry Point
 
-This is a user-friendly alias for the main daily digest pipeline.
-Executes all four web scrapers and creates a unified daily tech digest.
-
-Usage:
-    python master_scraper.py
-
-This script simply calls the main pipeline runner for convenience.
-"""
 
 import sys
 import os

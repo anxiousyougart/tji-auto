@@ -1,0 +1,313 @@
+name: Daily TJI Tech Digest Pipeline
+
+on:
+  # Schedule daily execution at 2:30 PM UTC (14:30)
+  schedule:
+    - cron: '30 14 * * *'
+  
+  # Allow manual triggering for testing
+  workflow_dispatch:
+    inputs:
+      debug_mode:
+        description: 'Enable debug logging'
+        required: false
+        default: 'false'
+        type: boolean
+
+env:
+  # API Keys from GitHub Secrets
+  GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
+  TINYURL_API_KEY: ${{ secrets.TINYURL_API_KEY }}
+  TWILIO_ACCOUNT_SID: ${{ secrets.TWILIO_ACCOUNT_SID }}
+  TWILIO_AUTH_TOKEN: ${{ secrets.TWILIO_AUTH_TOKEN }}
+  TWILIO_PHONE_FROM: ${{ secrets.TWILIO_PHONE_FROM }}
+  TWILIO_PHONE_TO: ${{ secrets.TWILIO_PHONE_TO }}
+  
+  # Pipeline Configuration
+  PYTHONPATH: ${{ github.workspace }}
+  TJI_ENVIRONMENT: github_actions
+
+jobs:
+  tji-pipeline:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    
+    steps:
+    - name: 🚀 Checkout Repository
+      uses: actions/checkout@v4
+      
+    - name: 🐍 Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.9'
+        cache: 'pip'
+        
+    - name: 📦 Install Dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
+        
+    - name: 🔍 Validate Environment
+      run: |
+        echo "🧪 Environment Validation"
+        echo "Python version: $(python --version)"
+        echo "Working directory: $(pwd)"
+        echo "Repository structure:"
+        ls -la
+        echo "Required directories:"
+        for dir in scrapers processors data messaging tests docs config; do
+          if [ -d "$dir" ]; then
+            echo "✅ $dir/ exists"
+          else
+            echo "❌ $dir/ missing"
+          fi
+        done
+        
+    - name: 📁 Restore Persistent Data
+      uses: actions/cache@v3
+      with:
+        path: |
+          data/*_history.json
+          data/seen_*.json
+          data/tinyurl_run_counter.json
+        key: tji-persistent-data-${{ github.run_number }}
+        restore-keys: |
+          tji-persistent-data-
+          
+    - name: 🧹 Initialize Data Directory
+      run: |
+        echo "🧹 Preparing data directory..."
+        mkdir -p data
+        
+        # Create empty persistent files if they don't exist
+        touch data/tech_news_history.json
+        touch data/upskill_articles_history.json
+        touch data/seen_internships.json
+        touch data/seen_jobs.json
+        touch data/tinyurl_run_counter.json
+        
+        # Initialize empty JSON files if they're empty
+        for file in data/tech_news_history.json data/upskill_articles_history.json; do
+          if [ ! -s "$file" ]; then
+            echo "[]" > "$file"
+          fi
+        done
+        
+        for file in data/seen_internships.json data/seen_jobs.json; do
+          if [ ! -s "$file" ]; then
+            echo "[]" > "$file"
+          fi
+        done
+        
+        if [ ! -s "data/tinyurl_run_counter.json" ]; then
+          echo '{"run_number": 1}' > "data/tinyurl_run_counter.json"
+        fi
+        
+        echo "📊 Data directory initialized"
+        ls -la data/
+        
+    - name: 📰 Tech News Scraper
+      id: tech_news
+      continue-on-error: true
+      run: |
+        echo "📰 Running Tech News Scraper..."
+        cd scrapers
+        python demo_tech_news.py
+        if [ -f "../data/ai_selected_article.json" ]; then
+          echo "✅ Tech news scraping completed successfully"
+          echo "status=success" >> $GITHUB_OUTPUT
+        else
+          echo "⚠️ Tech news scraping completed but no output file"
+          echo "status=partial" >> $GITHUB_OUTPUT
+        fi
+        
+    - name: 💼 Internship Scraper
+      id: internships
+      continue-on-error: true
+      run: |
+        echo "💼 Running Internship Scraper..."
+        cd scrapers
+        python internship_scraper.py
+        if [ -f "../data/selected_internship.json" ]; then
+          echo "✅ Internship scraping completed successfully"
+          echo "status=success" >> $GITHUB_OUTPUT
+        else
+          echo "⚠️ Internship scraping completed but no output file"
+          echo "status=partial" >> $GITHUB_OUTPUT
+        fi
+        
+    - name: 🏢 Jobs Scraper
+      id: jobs
+      continue-on-error: true
+      run: |
+        echo "🏢 Running Jobs Scraper..."
+        cd scrapers
+        python jobs_scraper.py
+        if [ -f "../data/selected_job.json" ]; then
+          echo "✅ Jobs scraping completed successfully"
+          echo "status=success" >> $GITHUB_OUTPUT
+        else
+          echo "⚠️ Jobs scraping completed but no output file"
+          echo "status=partial" >> $GITHUB_OUTPUT
+        fi
+        
+    - name: 📚 Upskill Articles Scraper
+      id: upskill
+      continue-on-error: true
+      run: |
+        echo "📚 Running Upskill Articles Scraper..."
+        cd tests
+        python demo_upskill.py
+        if [ -f "../data/ai_selected_upskill_article.json" ]; then
+          echo "✅ Upskill scraping completed successfully"
+          echo "status=success" >> $GITHUB_OUTPUT
+        else
+          echo "⚠️ Upskill scraping completed but no output file"
+          echo "status=partial" >> $GITHUB_OUTPUT
+        fi
+        
+    - name: 🔄 Daily Digest Aggregator
+      id: aggregator
+      continue-on-error: true
+      run: |
+        echo "🔄 Running Daily Digest Aggregator..."
+        cd processors
+        python daily_tech_aggregator.py
+        if [ -f "../data/daily_tech_digest.json" ]; then
+          echo "✅ Aggregation completed successfully"
+          echo "status=success" >> $GITHUB_OUTPUT
+        else
+          echo "❌ Aggregation failed - no output file"
+          echo "status=failed" >> $GITHUB_OUTPUT
+        fi
+        
+    - name: 🔗 TinyURL Shortener
+      id: shortener
+      continue-on-error: true
+      run: |
+        echo "🔗 Running TinyURL Shortener..."
+        cd processors
+        python tinyurl_shortener.py
+        if [ -f "../data/shortened_urls_digest.json" ]; then
+          echo "✅ URL shortening completed successfully"
+          echo "status=success" >> $GITHUB_OUTPUT
+        else
+          echo "⚠️ URL shortening failed, using original digest"
+          echo "status=partial" >> $GITHUB_OUTPUT
+        fi
+        
+    - name: ✍️ Message Drafter
+      id: drafter
+      continue-on-error: true
+      run: |
+        echo "✍️ Running Message Drafter..."
+        cd processors
+        python message_drafter.py
+        if [ -f "../data/tji_daily_message.json" ]; then
+          echo "✅ Message drafting completed successfully"
+          echo "status=success" >> $GITHUB_OUTPUT
+        else
+          echo "❌ Message drafting failed"
+          echo "status=failed" >> $GITHUB_OUTPUT
+        fi
+        
+    - name: 📱 WhatsApp Sender
+      id: whatsapp
+      continue-on-error: true
+      run: |
+        echo "📱 Sending WhatsApp Message..."
+        cd messaging
+        python twillo.py
+        echo "status=success" >> $GITHUB_OUTPUT
+        
+    - name: 📊 Pipeline Summary
+      run: |
+        echo "📊 PIPELINE EXECUTION SUMMARY"
+        echo "================================"
+        echo "Execution Time: $(date -u)"
+        echo "Repository: ${{ github.repository }}"
+        echo "Workflow Run: ${{ github.run_number }}"
+        echo ""
+        
+        # Component Status Summary
+        echo "📋 Component Results:"
+        echo "Tech News: ${{ steps.tech_news.outputs.status || 'failed' }}"
+        echo "Internships: ${{ steps.internships.outputs.status || 'failed' }}"
+        echo "Jobs: ${{ steps.jobs.outputs.status || 'failed' }}"
+        echo "Upskill: ${{ steps.upskill.outputs.status || 'failed' }}"
+        echo "Aggregator: ${{ steps.aggregator.outputs.status || 'failed' }}"
+        echo "URL Shortener: ${{ steps.shortener.outputs.status || 'failed' }}"
+        echo "Message Drafter: ${{ steps.drafter.outputs.status || 'failed' }}"
+        echo "WhatsApp Sender: ${{ steps.whatsapp.outputs.status || 'failed' }}"
+        echo ""
+        
+        # Count successes
+        success_count=0
+        total_count=8
+        
+        for status in "${{ steps.tech_news.outputs.status }}" "${{ steps.internships.outputs.status }}" "${{ steps.jobs.outputs.status }}" "${{ steps.upskill.outputs.status }}" "${{ steps.aggregator.outputs.status }}" "${{ steps.shortener.outputs.status }}" "${{ steps.drafter.outputs.status }}" "${{ steps.whatsapp.outputs.status }}"; do
+          if [ "$status" = "success" ]; then
+            success_count=$((success_count + 1))
+          fi
+        done
+        
+        echo "📈 Success Rate: $success_count/$total_count components"
+        
+        # Check critical components
+        critical_failed=false
+        if [ "${{ steps.aggregator.outputs.status }}" != "success" ]; then
+          echo "🚨 CRITICAL: Aggregator failed"
+          critical_failed=true
+        fi
+        if [ "${{ steps.drafter.outputs.status }}" != "success" ]; then
+          echo "🚨 CRITICAL: Message drafter failed"
+          critical_failed=true
+        fi
+        
+        if [ "$critical_failed" = true ]; then
+          echo "❌ Pipeline completed with critical failures"
+          exit 1
+        else
+          echo "✅ Pipeline completed successfully"
+        fi
+        
+    - name: 💾 Save Pipeline Artifacts
+      uses: actions/upload-artifact@v3
+      if: always()
+      with:
+        name: tji-pipeline-output-${{ github.run_number }}
+        path: |
+          data/*.json
+          data/*.log
+        retention-days: 7
+        
+    - name: 🔄 Cache Persistent Data
+      uses: actions/cache/save@v3
+      if: always()
+      with:
+        path: |
+          data/*_history.json
+          data/seen_*.json
+          data/tinyurl_run_counter.json
+        key: tji-persistent-data-${{ github.run_number }}
+
+    - name: 🔔 Workflow Completion Notification
+      if: always()
+      run: |
+        echo "🔔 WORKFLOW COMPLETION NOTIFICATION"
+        echo "=================================="
+        echo "Repository: ${{ github.repository }}"
+        echo "Workflow: ${{ github.workflow }}"
+        echo "Run Number: ${{ github.run_number }}"
+        echo "Triggered by: ${{ github.event_name }}"
+        echo "Completion Time: $(date -u)"
+        echo ""
+
+        # Determine overall status
+        if [ "${{ job.status }}" = "success" ]; then
+          echo "✅ WORKFLOW COMPLETED SUCCESSFULLY"
+          echo "📱 Daily TJI digest has been sent via WhatsApp"
+        else
+          echo "❌ WORKFLOW COMPLETED WITH ISSUES"
+          echo "🔍 Check the logs above for details"
+        fi

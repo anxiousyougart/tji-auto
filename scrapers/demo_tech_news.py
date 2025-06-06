@@ -1,7 +1,5 @@
 #!/usr/bin/env python3
-"""
-Demonstration of the simplified tech_news function.
-"""
+
 
 from webscraptest import tech_news, select_best_article
 import json
@@ -87,11 +85,28 @@ def main():
                 print()
             else:
                 print("❌ AI selection failed - using first article as fallback")
-                best_article = articles[0]
-                print(f"📰 FALLBACK ARTICLE OF THE DAY:")
-                print(f"Title: {best_article['title']}")
-                print(f"URL: {best_article['url']}")
-                print()
+                if articles:
+                    best_article = articles[0]
+                    print(f"📰 FALLBACK ARTICLE OF THE DAY:")
+                    print(f"Title: {best_article['title']}")
+                    print(f"URL: {best_article['url']}")
+
+                    # Save fallback article in the same format
+                    ai_selected = {
+                        "title": best_article['title'],
+                        "url": best_article['url']
+                    }
+                    with open('../data/ai_selected_article.json', 'w', encoding='utf-8') as f:
+                        json.dump(ai_selected, f, indent=2, ensure_ascii=False)
+                    print(f"🎯 Fallback article saved to: ../data/ai_selected_article.json")
+                    print()
+                else:
+                    print("❌ No articles available for fallback")
+                    # Create empty file to prevent aggregator issues
+                    empty_result = {"title": "No tech news found", "url": ""}
+                    with open('../data/ai_selected_article.json', 'w', encoding='utf-8') as f:
+                        json.dump(empty_result, f, indent=2, ensure_ascii=False)
+                    print(f"⚠️ Empty result saved to: ../data/ai_selected_article.json")
 
             # Display all results
             print(f"\n📋 ALL ARTICLES ({len(articles)} found):")

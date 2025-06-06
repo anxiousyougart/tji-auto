@@ -804,19 +804,21 @@ def select_best_article(json_file_path="../data/todays_tech_news.json", api_key=
               technical significance, or None if error
     """
     try:
+        # Import required modules at function level to avoid scope issues
+        import sys
+        import os
+
         # Get API key with robust fallback
-        groq_api_key = None
+        groq_api_key = os.getenv("GROQ_API_KEY")
 
         # Priority: Parameter > Environment > Centralized config > Working fallback
         if api_key:
-            groq_api_key = api_key
+            groq_api_key = os.getenv("GROQ_API_KEY")
         else:
             groq_api_key = os.getenv('GROQ_API_KEY')
 
         if not groq_api_key:
             try:
-                import sys
-                import os
                 sys.path.append(os.path.join(os.path.dirname(__file__), '..'))
                 from config.config import get_groq_api_key
                 groq_api_key = get_groq_api_key()
@@ -825,7 +827,7 @@ def select_best_article(json_file_path="../data/todays_tech_news.json", api_key=
 
         if not groq_api_key:
             # Working fallback key
-            groq_api_key = "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"
+            groq_api_key = os.getenv("GROQ_API_KEY")
 
         if not groq_api_key:
             logging.error("No API key available for AI selection")

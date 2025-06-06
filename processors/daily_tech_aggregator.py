@@ -1,18 +1,5 @@
 #!/usr/bin/env python3
-"""
-Daily Tech Digest Aggregator
 
-This script consolidates AI-selected content from all four existing scrapers:
-1. Tech News (ai_selected_article.json)
-2. Internships (selected_internship.json)
-3. Jobs/Placements (selected_job.json)
-4. Upskill Articles (ai_selected_upskill_article.json)
-
-Creates a unified daily_tech_digest.json with organized content and metadata.
-
-Author: Augment Agent
-Date: 2025-01-25
-"""
 
 import json
 import logging
@@ -31,7 +18,7 @@ try:
     OUTPUT_FILE = OUTPUT_FILES['daily_digest']
 except ImportError:
     # Fallback configuration if config.py is not available
-    GROQ_API_KEY = "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"
+    GROQ_API_KEY = os.getenv("GROQ_API_KEY")
     OUTPUT_FILE = "../data/daily_tech_digest.json"
 
 # Input file mappings

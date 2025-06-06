@@ -1,0 +1,138 @@
+[
+  {
+    "title": "5 Error Handling Patterns in Python (Beyond Try-Except)",
+    "url": "https://www.kdnuggets.com/5-error-handling-patterns-in-python-beyond-try-except"
+  },
+  {
+    "title": "Agentic DevOps in action: Reimagining every phase of the developer lifecycle",
+    "url": "https://devblogs.microsoft.com/blog/reimagining-every-phase-of-the-developer-lifecycle"
+  },
+  {
+    "title": "Catch Up on Microsoft Build 2025: Essential Sessions for .NET Developers",
+    "url": "https://devblogs.microsoft.com/dotnet/catching-up-on-microsoft-build-2025-essential-sessions-for-dotnet-developers"
+  },
+  {
+    "title": "Build like Microsoft: Developer agents in action",
+    "url": "https://devblogs.microsoft.com/microsoft365dev/build-like-microsoft-developer-agents-in-action"
+  },
+  {
+    "title": "Go 1.24.4-1 and 1.23.10-1 Microsoft builds now available",
+    "url": "https://devblogs.microsoft.com/go/go-1-24-4-1-and-1-23-10-1-microsoft-builds-now-available"
+  },
+  {
+    "title": "Building a Modern Python API with Azure Cosmos DB: A 5-Part Video Series",
+    "url": "https://devblogs.microsoft.com/cosmosdb/building-a-modern-python-api-with-azure-cosmos-db-a-5-part-video-series"
+  },
+  {
+    "title": "Azure Developer CLI (azd) - June 2025",
+    "url": "https://devblogs.microsoft.com/azure-sdk/azure-developer-cli-azd-june-2025"
+  },
+  {
+    "title": "Microsoft and LangChain: Leading the Way in AI Security for Open Source on Azure",
+    "url": "https://devblogs.microsoft.com/blog/microsoft-and-langchain-leading-the-way-in-ai-security-for-open-source-on-azure"
+  },
+  {
+    "title": "How to filter C++ Build Insights by project",
+    "url": "https://devblogs.microsoft.com/visualstudio/how-to-filter-c-build-insights-by-project"
+  },
+  {
+    "title": "Why do some Windows functions fail if I pass an unaligned Unicode string?",
+    "url": "https://devblogs.microsoft.com/oldnewthing/20250605-00/?p=111250"
+  },
+  {
+    "title": "Microsoft 365 Developer Blog",
+    "url": "https://devblogs.microsoft.com/microsoft365dev"
+  },
+  {
+    "title": "Building the next generation of job search at LinkedIn",
+    "url": "https://www.linkedin.com/blog/engineering/ai/building-the-next-generation-of-job-search-at-linkedin"
+  },
+  {
+    "title": "Featured Not just a vibe, the Stack Overflow Developer Survey is really hereThis year, we're not just collecting data; we're reflecting on the last year of questions, answers, hallucinations, job changes, tech stacks, memory allocations, models, systems and agents—together.",
+    "url": "https://stackoverflow.blog/2025/05/29/not-just-a-vibe-the-stack-overflow-developer-survey-is-really-here/"
+  },
+  {
+    "title": "Strengthening integrations, reliability, and trust: New features for Stack Overflow for Teams",
+    "url": "https://stackoverflow.blog/2025/05/27/strengthening-integrations-reliability-and-trust-new-features-for-stack-overflow-for-teams/"
+  },
+  {
+    "title": "Smarter insights, stronger teams: New features for Stack Overflow for Teams",
+    "url": "https://stackoverflow.blog/2025/04/15/smarter-insights-stronger-teams-new-features-for-stack-overflow-for-teams/"
+  },
+  {
+    "title": "Boosting collaboration and control: New features for Stack Overflow for Teams",
+    "url": "https://stackoverflow.blog/2025/03/04/boosting-collaboration-and-control-new-features-for-stack-overflow-for-teams/"
+  },
+  {
+    "title": "New year, new features: Level up your Stack Overflow for Teams in 2025",
+    "url": "https://stackoverflow.blog/2025/01/29/new-year-new-features-level-up-your-stack-overflow-for-teams-in-2025/"
+  },
+  {
+    "title": "Context Collection Competition by JetBrains and Mistral AI",
+    "url": "https://blog.jetbrains.com/ai/2025/06/context-collection-competition/"
+  },
+  {
+    "title": "Settings Management for Docker Desktop now generally available in the Admin Console\n    \nWe’re excited to announce that Settings Management for Docker Desktop is now Generally Available!  Settings Management can be configured in the Admin Console for customers with a Docker Business subscription.  After a successful Early Access period, this powerful administrative solution has been enhanced with new compliance reporting capabilities, completing our vision for centralized Docker Desktop…\n\n\nAjith Thilakan & John Ayub\nJun 4, 2025\nRead now",
+    "url": "https://www.docker.com/blog/settings-management-for-docker-desktop-now-generally-available-in-the-admin-console/"
+  },
+  {
+    "title": "Introducing Gateway API Inference Extension",
+    "url": "https://kubernetes.io/blog/2025/06/05/introducing-gateway-api-inference-extension/"
+  },
+  {
+    "title": "Docker Is Fast — Until It Isn’t: How I Cut Image Size by 80%",
+    "url": "https://hackernoon.com/docker-is-fast-until-it-isnt-how-i-cut-image-size-by-80percent"
+  },
+  {
+    "title": "How To Remove Docker Images, Containers, and Volumes",
+    "url": "https://www.digitalocean.com/community/tutorials/how-to-remove-docker-images-containers-and-volumes"
+  },
+  {
+    "title": "How to Create an Email Newsletter Generator",
+    "url": "https://www.digitalocean.com/community/tutorials/newsletter-generator-with-1click-models"
+  },
+  {
+    "title": "How to Automate Podcast Scripts with HuggingFace 1-Click Models",
+    "url": "https://www.digitalocean.com/community/tutorials/podcast-script-automation-huggingface-1click-models"
+  },
+  {
+    "title": "A Guide to Object Detection with Vision-Language Models",
+    "url": "https://www.digitalocean.com/community/conceptual-articles/hands-on-guide-to-object-detection-with-vision-language-models"
+  },
+  {
+    "title": "Vanishing Gradient Problem in Deep Learning: Explained",
+    "url": "https://www.digitalocean.com/community/tutorials/vanishing-gradient-problem"
+  },
+  {
+    "title": "Python type() Function Explained",
+    "url": "https://www.digitalocean.com/community/tutorials/python-type"
+  },
+  {
+    "title": "How to Use the nohup Command in Linux",
+    "url": "https://www.digitalocean.com/community/tutorials/nohup-command-in-linux"
+  },
+  {
+    "title": "How to Use SSH to Connect to a Remote Server (Step-by-Step Guide)",
+    "url": "https://www.digitalocean.com/community/tutorials/how-to-use-ssh-to-connect-to-a-remote-server"
+  },
+  {
+    "title": "Create an AI Image Prompt Builder App with Streamlit and Python",
+    "url": "https://www.digitalocean.com/community/tutorials/ai-image-prompt-builder-app-chatgpt"
+  },
+  {
+    "title": "How to Generate Videos with HunyuanVideo on DigitalOcean GPUs",
+    "url": "https://www.digitalocean.com/community/tutorials/hunyuanvideo-gpu-droplets"
+  },
+  {
+    "title": "Cloud Hosting for Blockchain",
+    "url": "https://www.digitalocean.com/solutions/blockchain"
+  },
+  {
+    "title": "WebAssembly is very suitable for serverless environments",
+    "url": "https://thenewstack.io/can-webassembly-solve-serverless-problems/"
+  },
+  {
+    "title": "machine learning framework",
+    "url": "https://thenewstack.io/the-ultimate-guide-to-machine-learning-frameworks/"
+  }
+]

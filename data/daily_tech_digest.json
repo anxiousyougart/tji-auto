@@ -1,0 +1,52 @@
+{
+  "daily_tech_digest": {
+    "metadata": {
+      "generated_at": "2025-06-07T02:50:21.282717",
+      "successful_sources": "4/4",
+      "source_files": {
+        "tech_news": "../data/ai_selected_article.json",
+        "internships": "../data/selected_internship.json",
+        "jobs": "../data/selected_job.json",
+        "upskill_articles": "../data/ai_selected_upskill_article.json"
+      }
+    },
+    "summary": {
+      "tech_news": {
+        "count": 1,
+        "status": "success"
+      },
+      "internships": {
+        "count": 1,
+        "status": "success"
+      },
+      "jobs": {
+        "count": 1,
+        "status": "success"
+      },
+      "upskill_articles": {
+        "count": 1,
+        "status": "success"
+      }
+    },
+    "content": {
+      "tech_news": {
+        "title": "Anthropic releases custom AI chatbot for classified spy work",
+        "url": "https://arstechnica.com/ai/2025/06/anthropic-releases-custom-ai-chatbot-for-classified-spy-work/"
+      },
+      "internships": {
+        "title": "Graduate Software Engineer",
+        "company": "Codeft Digital",
+        "url": "https://in.linkedin.com/jobs/view/graduate-software-engineer-at-codeft-digital-4243649091?position=1&pageNum=0&refId=b%2Fgmuv7VklYrm1v8r0Q0dQ%3D%3D&trackingId=1ieKva00aXXNmOQu1UbnTw%3D%3D"
+      },
+      "jobs": {
+        "title": "Full Stack Developer",
+        "company": "STAND 8 Technology Consulting",
+        "url": "https://in.linkedin.com/jobs/view/full-stack-developer-at-stand-8-technology-consulting-4236814334?position=3&pageNum=0&refId=uNVEsI47rM3dT8kCcahfOg%3D%3D&trackingId=UEzlf18b30WS7tBHbwPa3g%3D%3D"
+      },
+      "upskill_articles": {
+        "title": "Building a Modern Python API with Azure Cosmos DB: A 5-Part Video Series",
+        "url": "https://devblogs.microsoft.com/cosmosdb/building-a-modern-python-api-with-azure-cosmos-db-a-5-part-video-series"
+      }
+    }
+  }
+}

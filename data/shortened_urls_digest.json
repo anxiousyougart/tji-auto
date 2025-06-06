@@ -1,0 +1,33 @@
+{
+  "shortened_urls_digest": {
+    "metadata": {
+      "generated_at": "2025-06-07T02:51:39.127272",
+      "source_file": "../data/daily_tech_digest.json",
+      "total_urls_processed": 4,
+      "successful_shortenings": 4,
+      "failed_shortenings": 0,
+      "skipped_urls": 0,
+      "success_rate": "100.0%"
+    },
+    "content": [
+      {
+        "title": "Anthropic releases custom AI chatbot for classified spy work",
+        "shortened_url": "https://tinyurl.com/tech-news-tji-77"
+      },
+      {
+        "title": "Graduate Software Engineer",
+        "shortened_url": "https://tinyurl.com/internship-tji-77",
+        "company": "Codeft Digital"
+      },
+      {
+        "title": "Full Stack Developer",
+        "shortened_url": "https://tinyurl.com/placement-update-tji-77",
+        "company": "STAND 8 Technology Consulting"
+      },
+      {
+        "title": "Building a Modern Python API with Azure Cosmos DB: A 5-Part Video Series",
+        "shortened_url": "https://tinyurl.com/upskill-tji-77"
+      }
+    ]
+  }
+}

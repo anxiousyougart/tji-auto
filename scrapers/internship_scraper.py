@@ -1,13 +1,5 @@
 #!/usr/bin/env python3
-"""
-Intelligent Internship Scraper for Engineering Students in Hyderabad
 
-This script scrapes internship postings from multiple sources, applies multi-stage filtering,
-and uses Groq's AI to select the single most relevant, legitimate internship opportunity.
-
-Author: AI Assistant
-Date: 2025-05-25
-"""
 
 import requests
 from bs4 import BeautifulSoup
@@ -33,7 +25,7 @@ try:
     MAX_RETRIES = MAX_RETRIES
 except ImportError:
     # Fallback configuration if config.py is not available
-    GROQ_API_KEY = "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"
+    GROQ_API_KEY = os.getenv("GROQ_API_KEY")
     REQUEST_TIMEOUT = 30
     MAX_RETRIES = 3
 

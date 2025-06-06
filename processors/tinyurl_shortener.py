@@ -1,22 +1,5 @@
 #!/usr/bin/env python3
-"""
-TinyURL Shortening Automation Script for Daily Tech Digest
 
-This script integrates with the existing web scraper ecosystem to automatically
-shorten URLs from the daily_tech_digest.json file using TinyURL's free API.
-
-Features:
-- Reads URLs from aggregated daily_tech_digest.json
-- Automatically shortens URLs using TinyURL's simple API
-- Tracks URLs by category for organization
-- Robust error handling and retry logic
-- Generates shortened_urls_digest.json output
-
-Note: TinyURL's free API doesn't support custom aliases, but URLs are organized by category.
-
-Author: Augment Agent
-Date: 2025-01-25
-"""
 
 import json
 import logging
@@ -33,7 +16,7 @@ try:
 except ImportError:
     # Fallback configuration if config.py is not available
     TINYURL_CONFIG = {
-        'api_key': 'Rmg2VwW1ZBaL9LP3myDkCtq7AzFXWg8csW5CwXIGmBW5iAkUy3gn8mmwmmZq',
+        'api_key': os.getenv("TINYURL_API_KEY"),
         'api_endpoint': 'https://api.tinyurl.com/create',
         'domain': 'tinyurl.com',
         'input_file': '../data/daily_tech_digest.json',

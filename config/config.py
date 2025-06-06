@@ -13,12 +13,23 @@ import os
 from typing import Dict, Any
 
 # ============================================================================
+# ENVIRONMENT DETECTION
+# ============================================================================
+
+def is_github_actions() -> bool:
+    """Check if running in GitHub Actions environment."""
+    return os.getenv('TJI_ENVIRONMENT') == 'github_actions' or os.getenv('GITHUB_ACTIONS') == 'true'
+
+# ============================================================================
 # API CONFIGURATION
 # ============================================================================
 
 # Groq API Configuration
 # Priority: Environment variable > Config file > Working fallback key
 GROQ_API_KEY = os.getenv('GROQ_API_KEY', "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")
+
+# TinyURL API Configuration (GitHub Actions compatible)
+TINYURL_API_KEY = os.getenv('TINYURL_API_KEY', 'Rmg2VwW1ZBaL9LP3myDkCtq7AzFXWg8csW5CwXIGmBW5iAkUy3gn8mmwmmZq')
 
 # Fallback behavior when API key is not available
 ENABLE_AI_SELECTION = bool(GROQ_API_KEY)
@@ -59,14 +70,25 @@ UPSKILL_DATE_WINDOW = 168  # 7 days (more lenient for educational content)
 # OUTPUT CONFIGURATION
 # ============================================================================
 
-# Output file names
-OUTPUT_FILES = {
-    'tech_news': 'ai_selected_article.json',
-    'internships': 'selected_internship.json',
-    'jobs': 'selected_job.json',
-    'upskill': 'ai_selected_upskill_article.json',
-    'daily_digest': 'daily_tech_digest.json'
-}
+# Output file names (GitHub Actions compatible paths)
+def get_output_files() -> Dict[str, str]:
+    """Get output file paths based on environment."""
+    if is_github_actions():
+        base_path = os.path.join(os.getenv('GITHUB_WORKSPACE', os.getcwd()), 'data')
+    else:
+        base_path = '../data'
+
+    return {
+        'tech_news': os.path.join(base_path, 'ai_selected_article.json'),
+        'internships': os.path.join(base_path, 'selected_internship.json'),
+        'jobs': os.path.join(base_path, 'selected_job.json'),
+        'upskill': os.path.join(base_path, 'ai_selected_upskill_article.json'),
+        'daily_digest': os.path.join(base_path, 'daily_tech_digest.json'),
+        'shortened_urls': os.path.join(base_path, 'shortened_urls_digest.json'),
+        'tji_message': os.path.join(base_path, 'tji_daily_message.json')
+    }
+
+OUTPUT_FILES = get_output_files()
 
 # Log file names
 LOG_FILES = {
@@ -95,20 +117,29 @@ SCRAPER_TIMEOUTS = {
 # TINYURL SHORTENER CONFIGURATION
 # ============================================================================
 
-# TinyURL API Configuration
-TINYURL_CONFIG = {
-    'api_key': 'Rmg2VwW1ZBaL9LP3myDkCtq7AzFXWg8csW5CwXIGmBW5iAkUy3gn8mmwmmZq',
-    'api_endpoint': 'https://api.tinyurl.com/create',
-    'domain': 'tinyurl.com',
-    'input_file': 'daily_tech_digest.json',
-    'output_file': 'shortened_urls_digest.json',
-    'log_file': 'tinyurl_shortener.log',
-    'request_timeout': 30,
-    'max_retries_per_url': 3,
-    'delay_between_requests': 1,  # seconds
-    'rate_limit_delay': 5,  # seconds to wait when rate limited
-    'counter_file': 'tinyurl_run_counter.json'
-}
+# TinyURL API Configuration (GitHub Actions compatible)
+def get_tinyurl_config() -> Dict[str, Any]:
+    """Get TinyURL configuration based on environment."""
+    if is_github_actions():
+        base_path = os.path.join(os.getenv('GITHUB_WORKSPACE', os.getcwd()), 'data')
+    else:
+        base_path = '../data'
+
+    return {
+        'api_key': TINYURL_API_KEY,
+        'api_endpoint': 'https://api.tinyurl.com/create',
+        'domain': 'tinyurl.com',
+        'input_file': os.path.join(base_path, 'daily_tech_digest.json'),
+        'output_file': os.path.join(base_path, 'shortened_urls_digest.json'),
+        'log_file': os.path.join(base_path, 'tinyurl_shortener.log'),
+        'request_timeout': 30,
+        'max_retries_per_url': 3,
+        'delay_between_requests': 1,  # seconds
+        'rate_limit_delay': 5,  # seconds to wait when rate limited
+        'counter_file': os.path.join(base_path, 'tinyurl_run_counter.json')
+    }
+
+TINYURL_CONFIG = get_tinyurl_config()
 
 # Category alias mappings for shortened URLs (TinyURL compatible format)
 URL_ALIAS_FORMATS = {
@@ -160,6 +191,23 @@ JOB_EXCLUDE_KEYWORDS = [
     'intern', 'internship', 'trainee', 'graduate trainee', 'apprentice',
     'senior', 'lead', 'principal', 'manager', 'director', 'head of'
 ]
+
+# ============================================================================
+# TWILIO CONFIGURATION (GitHub Actions compatible)
+# ============================================================================
+
+def get_twilio_config() -> Dict[str, str]:
+    """Get Twilio configuration from environment variables."""
+    return {
+        'account_sid': os.getenv('TWILIO_ACCOUNT_SID', 'AC185a7783037edc716eaff3ca28a5993c'),
+        'auth_token': os.getenv('TWILIO_AUTH_TOKEN', 'a48df63098f045e09f4db5ce5c881207'),
+        'phone_from': os.getenv('TWILIO_PHONE_FROM', 'whatsapp:+14155238886'),
+        'phone_to': os.getenv('TWILIO_PHONE_TO', 'whatsapp:+918179399260')
+    }
+
+def get_tinyurl_api_key() -> str:
+    """Get TinyURL API key with environment variable support."""
+    return TINYURL_API_KEY
 
 # ============================================================================
 # UTILITY FUNCTIONS

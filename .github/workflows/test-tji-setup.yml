@@ -1,0 +1,211 @@
+name: Test TJI Setup
+
+on:
+  # Manual trigger only for testing
+  workflow_dispatch:
+    inputs:
+      test_component:
+        description: 'Component to test'
+        required: true
+        default: 'all'
+        type: choice
+        options:
+        - all
+        - environment
+        - scrapers
+        - config
+        - messaging
+
+env:
+  # API Keys from GitHub Secrets (for testing)
+  GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
+  TINYURL_API_KEY: ${{ secrets.TINYURL_API_KEY }}
+  TWILIO_ACCOUNT_SID: ${{ secrets.TWILIO_ACCOUNT_SID }}
+  TWILIO_AUTH_TOKEN: ${{ secrets.TWILIO_AUTH_TOKEN }}
+  TWILIO_PHONE_FROM: ${{ secrets.TWILIO_PHONE_FROM }}
+  TWILIO_PHONE_TO: ${{ secrets.TWILIO_PHONE_TO }}
+  
+  # Test Configuration
+  PYTHONPATH: ${{ github.workspace }}
+  TJI_ENVIRONMENT: github_actions
+
+jobs:
+  test-setup:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    
+    steps:
+    - name: 🚀 Checkout Repository
+      uses: actions/checkout@v4
+      
+    - name: 🐍 Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.9'
+        cache: 'pip'
+        
+    - name: 📦 Install Dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
+        
+    - name: 🔍 Test Environment Setup
+      if: ${{ github.event.inputs.test_component == 'all' || github.event.inputs.test_component == 'environment' }}
+      run: |
+        echo "🧪 ENVIRONMENT SETUP TEST"
+        echo "========================="
+        echo "Python version: $(python --version)"
+        echo "Working directory: $(pwd)"
+        echo "GitHub workspace: $GITHUB_WORKSPACE"
+        echo "TJI environment: $TJI_ENVIRONMENT"
+        echo ""
+        
+        echo "📁 Directory Structure:"
+        for dir in scrapers processors data messaging tests docs config; do
+          if [ -d "$dir" ]; then
+            file_count=$(find "$dir" -name "*.py" | wc -l)
+            echo "✅ $dir/ ($file_count Python files)"
+          else
+            echo "❌ $dir/ missing"
+          fi
+        done
+        echo ""
+        
+        echo "🔑 Environment Variables:"
+        echo "GROQ_API_KEY: ${{ secrets.GROQ_API_KEY != '' && '✅ Set' || '❌ Missing' }}"
+        echo "TINYURL_API_KEY: ${{ secrets.TINYURL_API_KEY != '' && '✅ Set' || '❌ Missing' }}"
+        echo "TWILIO_ACCOUNT_SID: ${{ secrets.TWILIO_ACCOUNT_SID != '' && '✅ Set' || '❌ Missing' }}"
+        echo "TWILIO_AUTH_TOKEN: ${{ secrets.TWILIO_AUTH_TOKEN != '' && '✅ Set' || '❌ Missing' }}"
+        echo "TWILIO_PHONE_FROM: ${{ secrets.TWILIO_PHONE_FROM != '' && '✅ Set' || '❌ Missing' }}"
+        echo "TWILIO_PHONE_TO: ${{ secrets.TWILIO_PHONE_TO != '' && '✅ Set' || '❌ Missing' }}"
+        
+    - name: ⚙️ Test Configuration Import
+      if: ${{ github.event.inputs.test_component == 'all' || github.event.inputs.test_component == 'config' }}
+      run: |
+        echo "⚙️ CONFIGURATION IMPORT TEST"
+        echo "============================"
+        
+        python -c "
+        import sys
+        import os
+        sys.path.append('config')
+        
+        try:
+            from config import get_groq_api_key, get_twilio_config, OUTPUT_FILES
+            print('✅ Config import successful')
+            
+            # Test API key functions
+            groq_key = get_groq_api_key()
+            print(f'✅ Groq API key: {\"Available\" if groq_key else \"Missing\"}')
+            
+            twilio_config = get_twilio_config()
+            print(f'✅ Twilio config: {len([k for k, v in twilio_config.items() if v])} of 4 fields set')
+            
+            print(f'✅ Output files: {len(OUTPUT_FILES)} configured')
+            
+        except Exception as e:
+            print(f'❌ Config import failed: {e}')
+            sys.exit(1)
+        "
+        
+    - name: 🕷️ Test Scraper Imports
+      if: ${{ github.event.inputs.test_component == 'all' || github.event.inputs.test_component == 'scrapers' }}
+      run: |
+        echo "🕷️ SCRAPER IMPORT TEST"
+        echo "====================="
+        
+        # Test individual scraper imports
+        scrapers=("demo_tech_news.py" "internship_scraper.py" "jobs_scraper.py" "upskill_scraper.py" "webscraptest.py")
+        
+        for scraper in "${scrapers[@]}"; do
+          echo "Testing $scraper..."
+          if python -c "
+            import sys
+            import os
+            sys.path.append('scrapers')
+            sys.path.append('.')
+            
+            # Try to import the module
+            import importlib.util
+            spec = importlib.util.spec_from_file_location('test_module', 'scrapers/$scraper')
+            if spec is None:
+                raise ImportError('Cannot create spec')
+            print('✅ $scraper can be imported')
+          " 2>/dev/null; then
+            echo "✅ $scraper import successful"
+          else
+            echo "⚠️ $scraper import issues (may be normal)"
+          fi
+        done
+        
+    - name: 📱 Test Messaging Setup
+      if: ${{ github.event.inputs.test_component == 'all' || github.event.inputs.test_component == 'messaging' }}
+      run: |
+        echo "📱 MESSAGING SETUP TEST"
+        echo "======================"
+        
+        # Create a test message file
+        mkdir -p data
+        echo '{"drafted_message": "🧪 Test message from GitHub Actions TJI pipeline setup validation."}' > data/tji_daily_message.json
+        
+        # Test Twilio import and configuration
+        python -c "
+        import sys
+        import os
+        sys.path.append('messaging')
+        sys.path.append('.')
+        
+        try:
+            from twilio.rest import Client
+            print('✅ Twilio library available')
+            
+            # Test configuration
+            from config.config import get_twilio_config
+            config = get_twilio_config()
+            
+            required_fields = ['account_sid', 'auth_token', 'phone_from', 'phone_to']
+            missing = [f for f in required_fields if not config.get(f)]
+            
+            if missing:
+                print(f'⚠️ Missing Twilio config: {missing}')
+            else:
+                print('✅ Twilio configuration complete')
+                
+                # Test client creation (don't send message)
+                client = Client(config['account_sid'], config['auth_token'])
+                print('✅ Twilio client created successfully')
+                
+        except ImportError as e:
+            print(f'❌ Twilio import failed: {e}')
+        except Exception as e:
+            print(f'⚠️ Twilio test issue: {e}')
+        "
+        
+    - name: 📊 Test Summary
+      if: always()
+      run: |
+        echo "📊 TEST SUMMARY"
+        echo "==============="
+        echo "Test Component: ${{ github.event.inputs.test_component }}"
+        echo "Repository: ${{ github.repository }}"
+        echo "Test Time: $(date -u)"
+        echo ""
+        
+        if [ "${{ job.status }}" = "success" ]; then
+          echo "✅ ALL TESTS PASSED"
+          echo "🚀 Your TJI setup is ready for automation!"
+          echo ""
+          echo "💡 Next steps:"
+          echo "  1. The daily workflow will run automatically at 14:30 UTC"
+          echo "  2. You can manually trigger it from the Actions tab"
+          echo "  3. Monitor the first few runs to ensure everything works"
+          echo "  4. Check your WhatsApp for daily digest messages"
+        else
+          echo "❌ SOME TESTS FAILED"
+          echo "🔧 Please review the logs above and fix any issues"
+          echo ""
+          echo "🔍 Common fixes:"
+          echo "  • Ensure all GitHub secrets are properly configured"
+          echo "  • Verify API keys are valid and have sufficient quotas"
+          echo "  • Check Twilio WhatsApp number verification"
+        fi

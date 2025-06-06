@@ -1,13 +1,5 @@
 #!/usr/bin/env python3
-"""
-Robust Master Scraper - Daily Tech Digest Pipeline
 
-This is an enhanced version of the master scraper with better error handling,
-fallback mechanisms, and the ability to work without external APIs.
-
-Author: Augment Agent
-Date: 2025-01-25
-"""
 
 import subprocess
 import sys

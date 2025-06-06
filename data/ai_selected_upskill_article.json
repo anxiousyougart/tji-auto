@@ -1,6 +1,12 @@
 {
-  "message": "No suitable content found for Upskill Articles Scraper",
-  "status": "no_content",
-  "timestamp": "2025-06-07T01:03:40.992417",
-  "scraper": "Upskill Articles Scraper"
+  "selected_article": {
+    "title": "Building a Modern Python API with Azure Cosmos DB: A 5-Part Video Series",
+    "url": "https://devblogs.microsoft.com/cosmosdb/building-a-modern-python-api-with-azure-cosmos-db-a-5-part-video-series"
+  },
+  "ai_reasoning": "The selected article is:\n\n**6. Building a Modern Python API with Azure Cosmos DB: A 5-Part Video Series**\n\nThis article is most valuable for CS students because it provides a comprehensive, hands-on guide to building a modern Python API using Azure Cosmos DB. The article is a 5-part video series, which means students can follow along with step-by-step tutorials and implementation examples. The technology is modern, in-demand, and relevant to industry trends. The article teaches concrete, applicable skills in API development, data storage, and cloud computing. Additionally, the article shares best practices and professional development techniques, making it a valuable resource for students looking to build portfolio-worthy skills.",
+  "total_articles_scraped": 34,
+  "total_articles_analyzed": 34,
+  "previously_selected_filtered": 0,
+  "selection_criteria": "Practical learning value, technology relevance, skill building potential",
+  "deduplication_enabled": true
 }

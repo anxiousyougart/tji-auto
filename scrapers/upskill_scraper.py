@@ -1,22 +1,5 @@
 #!/usr/bin/env python3
-"""
-Upskill Articles Scraper for Computer Science Engineering Students
 
-This script scrapes educational and tutorial articles from various tech learning platforms,
-focusing on content that helps CS students learn new technologies, best practices,
-and implementation guides. Uses AI-powered selection to identify the most valuable
-learning resources.
-
-Target Content:
-- Technology tutorials and how-to guides
-- Best practices and tech stack recommendations
-- Project implementation tutorials
-- Company engineering blogs and technical insights
-- Developer tools and framework guides
-
-Author: Augment Agent
-Date: 2025-01-25
-"""
 
 import requests
 import json
@@ -41,7 +24,7 @@ try:
     MAX_RETRIES = CONFIG_MAX_RETRIES
 except ImportError:
     # Fallback configuration if config.py is not available
-    GROQ_API_KEY = "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"
+    GROQ_API_KEY = os.getenv("GROQ_API_KEY")
     MAX_RETRIES = 3
 
 # Configuration

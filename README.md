@@ -44,7 +44,7 @@ python setup.py
 
 See the `docs/` directory for detailed documentation on each component.
 
-## Features
+## ✨ Features
 
 - 🔍 **Web Scraping**: Tech news, internships, jobs, upskill articles
 - 🤖 **AI Curation**: Intelligent content selection using Groq API
@@ -53,6 +53,29 @@ See the `docs/` directory for detailed documentation on each component.
 - 📱 **WhatsApp Delivery**: Automated message sending via Twilio
 - 🧹 **Smart Cleanup**: Automatic file management with deduplication
 - 🛡️ **Robust Pipeline**: Error handling and fallback mechanisms
+- 🤖 **GitHub Actions**: Automated daily execution in the cloud
+
+## 🤖 GitHub Actions Automation
+
+The TJI pipeline includes comprehensive GitHub Actions workflows for automated daily execution:
+
+### **Daily Automation**
+- **Schedule**: Runs automatically daily at 2:30 PM UTC
+- **Cloud Execution**: No local machine required
+- **WhatsApp Delivery**: Automated message sending
+- **Error Handling**: Robust failure recovery
+
+### **Quick Setup**
+1. **Configure Secrets**: Add API keys to GitHub repository secrets
+2. **Push to GitHub**: Upload your code to a GitHub repository
+3. **Automatic Execution**: Pipeline runs daily without intervention
+
+### **Manual Testing**
+- Test workflow available for validation
+- Manual trigger option for immediate execution
+- Component-specific testing capabilities
+
+📖 **Complete Setup Guide**: [docs/GITHUB_ACTIONS_SETUP.md](docs/GITHUB_ACTIONS_SETUP.md)
 
 ## License
 

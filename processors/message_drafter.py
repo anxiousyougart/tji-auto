@@ -1,13 +1,5 @@
 #!/usr/bin/env python3
-"""
-TJI Message Drafter
 
-Creates professional, engaging messages using tech news, internships, jobs, and upskill content
-with AI-enhanced formatting and daily pro tips.
-
-Author: Augment Agent
-Date: 2025-01-25
-"""
 
 import json
 import logging
@@ -24,7 +16,7 @@ try:
     from config.config import get_groq_api_key
     GROQ_API_KEY = get_groq_api_key()
 except ImportError:
-    GROQ_API_KEY = "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"
+    GROQ_API_KEY = os.getenv("GROQ_API_KEY")
 
 # Configuration
 INPUT_FILE = "../data/shortened_urls_digest.json"
@@ -185,32 +177,35 @@ def enhance_message_with_groq(content: Dict, run_number: int, pro_tip: str) -> s
                 "",
                 content['tech_news']['title'],
                 f"Read more at:\n{content['tech_news']['url']}",
-                ""
+                "- - -"
             ])
 
         if content['internship']:
             sections.extend([
+                "",
                 "*INTERNSHIP UPDATE:*",
                 "",
                 f"{content['internship']['title']} at {content['internship']['company']}",
                 f"Apply now at:\n{content['internship']['url']}",
-                ""
+                "- - -"
             ])
 
         if content['placement']:
             sections.extend([
+                "",
                 "*PLACEMENT UPDATE:*",
                 "",
                 f"{content['placement']['title']} at {content['placement']['company']}",
                 f"Apply now at:\n{content['placement']['url']}",
-                ""
+                "- - -"
             ])
 
         sections.extend([
+            "",
             "*PRO TIP:*",
             "",
             pro_tip,
-            ""
+            "- - -"
         ])
 
         if content['upskill']:
@@ -241,7 +236,7 @@ CRITICAL FORMATTING REQUIREMENTS:
 - Keep it professional, no emojis
 - PRIORITIZE BREVITY - the message should be quick to read
 - Return only the enhanced message starting with "*#TJI {run_number}*"
-- Use \\n for line breaks exactly as shown with blank line after each section header
+- Use \\n for line breaks exactly as shown with blank line beforeafter each section header
 - Can add extra introductory text or concluding remarks. but keep it short and concise.
 - Ensure each piece of content appears only once"""
 

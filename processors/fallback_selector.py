@@ -1,13 +1,5 @@
 #!/usr/bin/env python3
-"""
-Fallback Selection System
 
-This module provides fallback selection methods when AI (Groq API) is not available.
-Uses rule-based algorithms to select the best content from scraped results.
-
-Author: Augment Agent
-Date: 2025-01-25
-"""
 
 import json
 import logging

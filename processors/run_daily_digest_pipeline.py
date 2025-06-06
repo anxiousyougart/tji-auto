@@ -1,39 +1,5 @@
 #!/usr/bin/env python3
-"""
-Master Orchestrator Script - Daily Tech Digest Pipeline
 
-This script executes all four web scrapers in sequence and aggregates their results
-into a single JSON output file. Handles failures gracefully and provides comprehensive
-error reporting.
-
-Features:
-- Automatic cleanup of previous output files (preserves deduplication history)
-- Sequential execution of all scrapers with timeout handling
-- Comprehensive error reporting and fallback file creation
-- Optional TinyURL shortening integration
-- Automated message drafting with AI-powered pro tips
-- WhatsApp message sending via Twilio integration
-
-Pipeline Steps:
-1. Tech News Scraper (with AI-powered article selection)
-2. Internship Scraper (targeting Internshala and LinkedIn)
-3. Job Scraper (entry-level positions, 0-1 years experience)
-4. Upskill Article Scraper (tutorials, best practices, tech stacks)
-5. Daily Digest Aggregator (consolidates all results)
-6. TinyURL Shortener (optional - creates shortened URLs)
-7. Message Drafter (optional - creates formatted WhatsApp message)
-8. Twilio Sender (optional - sends WhatsApp message)
-
-Usage:
-    python run_daily_digest_pipeline.py
-    python master_scraper.py  # Alternative name
-
-Output:
-    daily_tech_digest.json - Unified results from all scrapers
-
-Author: Augment Agent
-Date: 2025-01-25
-"""
 
 import subprocess
 import sys

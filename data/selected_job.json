@@ -1,6 +1,10 @@
 {
-  "message": "No suitable content found for Job Scraper",
-  "status": "no_content",
-  "timestamp": "2025-06-07T01:03:37.647422",
-  "scraper": "Job Scraper"
+  "title": "Full Stack Developer",
+  "company": "STAND 8 Technology Consulting",
+  "url": "https://in.linkedin.com/jobs/view/full-stack-developer-at-stand-8-technology-consulting-4236814334?position=3&pageNum=0&refId=uNVEsI47rM3dT8kCcahfOg%3D%3D&trackingId=UEzlf18b30WS7tBHbwPa3g%3D%3D",
+  "priority_score": 3,
+  "field_category": "CSE/IT",
+  "experience_level": "Entry Level (Assumed)",
+  "experience_matches": [],
+  "ai_reasoning": "Selected by AI as most valuable and legitimate opportunity"
 }
