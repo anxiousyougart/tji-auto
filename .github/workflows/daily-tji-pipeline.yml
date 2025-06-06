@@ -20,8 +20,8 @@ env:
   TINYURL_API_KEY: ${{ secrets.TINYURL_API_KEY }}
   TWILIO_ACCOUNT_SID: ${{ secrets.TWILIO_ACCOUNT_SID }}
   TWILIO_AUTH_TOKEN: ${{ secrets.TWILIO_AUTH_TOKEN }}
-  TWILIO_PHONE_FROM: ${{ secrets.TWILIO_PHONE_FROM }}
-  TWILIO_PHONE_TO: ${{ secrets.TWILIO_PHONE_TO }}
+  TWILIO_SANDBOX_NUMBER: ${{ secrets.TWILIO_SANDBOX_NUMBER }}
+  YOUR_VERIFIED_NUMBER: ${{ secrets.YOUR_VERIFIED_NUMBER }}
   
   # Pipeline Configuration
   PYTHONPATH: ${{ github.workspace }}
