@@ -1,7 +1,6 @@
 # TJI Automation Project
 
-Automated daily tech digest pipeline with web scraping, content curation, and WhatsApp delivery.
-
+Delivering curated tech content straight to your WhatsApp, fully automated, powered by AI, and running in the cloud.
 ## Directory Structure
 
 ```
@@ -80,3 +79,5 @@ The TJI pipeline includes comprehensive GitHub Actions workflows for automated d
 ## License
 
 MIT License - see LICENSE file for details.
+
+Made with ❤️ by Anxious_yogurt 
