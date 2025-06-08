@@ -63,16 +63,17 @@ jobs:
           fi
         done
         
-    - name: 📁 Restore Persistent Data
+   - name: 📁 Restore Persistent Data
       uses: actions/cache@v3
       with:
         path: |
           data/*_history.json
           data/seen_*.json
           data/tinyurl_run_counter.json
-        key: tji-persistent-data-${{ github.run_number }}
+        key: tji-persistent-data-v6-${{ github.run_number }}
         restore-keys: |
-          tji-persistent-data-
+          tji-persistent-data-v6-
+
           
     - name: 🧹 Initialize Data Directory
       run: |
@@ -290,7 +291,7 @@ jobs:
           data/*_history.json
           data/seen_*.json
           data/tinyurl_run_counter.json
-        key: tji-persistent-data-${{ github.run_number }}
+        key: tji-persistent-data-v2-${{ github.run_number }}
 
     - name: 🔔 Workflow Completion Notification
       if: always()
