@@ -80,4 +80,4 @@ The TJI pipeline includes comprehensive GitHub Actions workflows for automated d
 
 MIT License - see LICENSE file for details.
 
-Made with ❤️ by Anxious_yougurt 
+Made with ❤️ by anxious_yougurt 
