@@ -5,8 +5,6 @@ Test script for TinyURL integration
 This script tests the TinyURL shortening functionality with sample data
 to ensure everything works correctly before running on real data.
 
-Author: Augment Agent
-Date: 2025-01-25
 """
 
 import json

@@ -1,12 +1,6 @@
 #!/usr/bin/env python3
-"""
-Test script to verify TinyURL alias format
 
-This script tests different alias formats to find what works with TinyURL API.
 
-Author: Augment Agent
-Date: 2025-01-25
-"""
 
 import requests
 import json

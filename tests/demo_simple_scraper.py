@@ -1,13 +1,5 @@
 #!/usr/bin/env python3
-"""
-Simple Demo Scraper - Works Without API
 
-This is a simplified version that demonstrates the scraping pipeline
-without requiring external APIs. Creates sample output files for testing.
-
-Author: Augment Agent
-Date: 2025-01-25
-"""
 
 import json
 import logging

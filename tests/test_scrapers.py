@@ -5,8 +5,6 @@ Test Individual Scrapers
 This script tests each scraper individually to identify specific issues
 and provides detailed error reporting for debugging.
 
-Author: Augment Agent
-Date: 2025-01-25
 """
 
 import subprocess

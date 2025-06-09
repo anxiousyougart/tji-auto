@@ -1,13 +1,5 @@
 #!/usr/bin/env python3
-"""
-Demo script for TinyURL Shortening Automation
 
-This script demonstrates the TinyURL shortening functionality and provides
-a safe way to test the system before running on actual data.
-
-Author: Augment Agent
-Date: 2025-01-25
-"""
 
 import json
 import os

@@ -1,7 +1,5 @@
 #!/usr/bin/env python3
-"""
-Debug script to analyze LinkedIn page structure and identify all job cards
-"""
+
 
 import requests
 from bs4 import BeautifulSoup

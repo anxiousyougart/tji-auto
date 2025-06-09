@@ -5,8 +5,6 @@ Test script to verify TinyURL API key and custom alias functionality
 This script tests the TinyURL API with the provided API key to ensure
 it works correctly with custom aliases.
 
-Author: Augment Agent
-Date: 2025-01-25
 """
 
 import requests

@@ -5,8 +5,6 @@ Simple test script to verify TinyURL API functionality
 This script tests the basic TinyURL API to ensure it works correctly
 before running the full shortener.
 
-Author: Augment Agent
-Date: 2025-01-25
 """
 
 import requests
