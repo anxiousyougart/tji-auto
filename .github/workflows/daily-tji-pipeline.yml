@@ -3,7 +3,7 @@ name: Daily TJI Tech Digest Pipeline
 on:
   # Schedule daily execution at 2:30 PM UTC (14:30)
   schedule:
-    - cron: '0 2 * * 1-6' 
+    - cron: '30 13 * * 1-6' 
   
   # Allow manual triggering for testing
   workflow_dispatch:
