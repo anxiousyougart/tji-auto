@@ -76,8 +76,4 @@ The TJI pipeline includes comprehensive GitHub Actions workflows for automated d
 
  **Complete Setup Guide**: [docs/GITHUB_ACTIONS_SETUP.md](docs/GITHUB_ACTIONS_SETUP.md)
 
-## License
-
-MIT License - see LICENSE file for details.
-
 Made with ❤️ by anxious_yougurt 
