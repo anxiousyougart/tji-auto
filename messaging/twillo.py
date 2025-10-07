@@ -14,7 +14,7 @@ client = Client(account_sid, auth_token)
 # Step 3: Send WhatsApp message
 message = client.messages.create(
     from_="whatsapp:+14155238886",  # Twilio sandbox number
-    to="whatsapp:+918179399260",    # Your verified WhatsApp number
+    to="whatsapp:+916005529862",    # Your verified WhatsApp number
     body=message_body
 )
 
