@@ -138,7 +138,7 @@ Provide only the tip content, no extra text or formatting."""
 
         response = client.chat.completions.create(
             messages=[{"role": "user", "content": prompt}],
-            model="llama3-8b-8192",
+            model="mixtral-8x7b-32768",
             max_tokens=100,
             temperature=0.8
         )
